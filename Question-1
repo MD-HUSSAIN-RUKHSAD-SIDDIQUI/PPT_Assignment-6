@@ -1,19 +1,20 @@
 class Solution {
     public int[] diStringMatch(String s) {
-        int[] result = new int[s.length() + 1];
-        int end = result.length - 1, start = 0;
-        int index = 0;
-        while(index < s.length()){
-            if(s.charAt(index) == 'I'){
-                result[index] = start;   
-                start++;
-            }else{
-                result[index] = end;
-                end--;
-            }
-            index++;
-        }
-        result[result.length - 1] = start;
-        return result;
+     int[] result=new int[s.length()+1];
+     int leftPointer=0;
+     int rightPointer=s.length();
+     int index=0;
+     for(int i=0;i<s.length();i++)
+     {
+         if(s.charAt(i)=='I')
+         result[index++]=leftPointer++;
+         else
+         result[index++]=rightPointer--;
+     }   
+     if(s.charAt(s.length()-1)=='I')
+     result[index]=leftPointer;
+     else
+     result[index]=rightPointer;
+     return result;
     }
 }
